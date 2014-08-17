@@ -1,7 +1,7 @@
 <?hh
 
 class Cookie {
-  public static function function(
+  public static function set(
     string $key,
     string $value,
     int $time
