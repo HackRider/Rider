@@ -2,7 +2,7 @@
 
 class Session {
   public static function init(): ?User {
-    if (isset($_SESSION['user']) {
+    if (isset($_SESSION['user'])) {
       return User::genByUsername($_SESSION['user']);
     }
     
