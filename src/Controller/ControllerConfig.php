@@ -4,7 +4,7 @@ namespace Rider\Controller;
 
 class ControllerConfig {
   private ?string $title;
-  private Vector<(function (): bool)> $checks = Vector {};
+  private Vector<(function(): bool)> $checks = Vector {};
 
   /**
    * Set the title for the controller
@@ -21,12 +21,12 @@ class ControllerConfig {
     return $this->title;
   }
 
-  public function addCheck((function (): bool) $foo): this {
+  public function addCheck((function(): bool) $foo): this {
     $this->checks[] = $foo;
     return $this;
   }
 
-  public function getChecks(): Vector<(function (): bool)> {
+  public function getChecks(): Vector<(function(): bool)> {
     return $this->checks;
   }
 }

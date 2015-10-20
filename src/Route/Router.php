@@ -10,14 +10,13 @@ class Router {
 
     // Match the path
     $uri = parse_url($_SERVER["REQUEST_URI"], PHP_URL_PATH);
-    foreach($routes as $route_path => $controller_name) {
-      if(preg_match(
-        "@^$route_path$@i",
-        "$uri",
-        $_SESSION['route_params'])
-      ) {
+    foreach ($routes as $route_path => $controller_name) {
+      if (preg_match("@^$route_path$@i", "$uri", $_SESSION['route_params'])) {
         $controller = (new ReflectionClass($controller_name))->newInstance();
-        invariant($controller instanceof \Rider\Controller\BaseController, "Tried to instanciate a controller which does not extend Base Controller");
+        invariant(
+          $controller instanceof \Rider\Controller\BaseController,
+          "Tried to instanciate a controller which does not extend BaseController",
+        );
 
         Auth::runChecks($controller->getConfig()->getChecks());
 
