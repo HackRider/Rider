@@ -20,7 +20,12 @@ class Router {
 
         Auth::runChecks($controller->getConfig()->getChecks());
 
-        Render::go($controller, $method);
+        try {
+          Render::go($controller, $method);
+        } catch (RedirectException $ex) {
+          header('Location: '.$ex->getURI());
+          exit();
+        }
 
         return;
       }
