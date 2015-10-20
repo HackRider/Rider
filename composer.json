@@ -1,0 +1,22 @@
+{
+    "name": "rider/rider",
+    "description": "A Hacklang application framework",
+    "type": "framework",
+    "license": "MIT",
+    "require": {
+        "hhvm": "~3.6",
+        "hhvm/xhp-js": "~1.0.0",
+        "sergeytsalkov/meekrodb": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "Rider\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Robert Lynch",
+            "email": "robertlynch2012@gmail.com"
+        }
+    ]
+}
