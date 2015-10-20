@@ -21,7 +21,7 @@ class Router {
         Auth::runChecks($controller->getConfig()->getChecks());
 
         try {
-          Render::go($controller, $method);
+          \Rider\Views\Render::go($controller, $method);
         } catch (RedirectException $ex) {
           header('Location: '.$ex->getURI());
           exit();
