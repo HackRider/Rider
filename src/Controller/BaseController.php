@@ -2,6 +2,8 @@
 
 namespace Rider\Controller;
 
+use Rider\Route\URIBuilder;
+
 abstract class BaseController {
   /**
    * The path which the controller will live on
@@ -32,5 +34,15 @@ abstract class BaseController {
    */
   public static function getPathParam(string $key): string {
     return getRouteParams()[$key];
+  }
+
+  /**
+   * Get a URI Builder for the controller
+   *
+   * When using a redirect or generating a link, the URI Builder can be useful
+   * to generate the path programatically.
+   */
+  public static function getURIBuilder(): URIBuilder {
+    return new URIBuilder(static::getPath());
   }
 }
