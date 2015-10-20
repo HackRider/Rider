@@ -5,9 +5,6 @@ namespace Rider\Session;
 class Flash {
   const FLASH = 'flash';
 
-  const ERROR = 'error';
-  const SUCCESS = 'success';
-
   public static function set($key, $value): void {
     if(!isset($_SESSION[self::FLASH])) {
       $_SESSION[self::FLASH] = Map {};
