@@ -7,7 +7,26 @@ use XHPRoot;
 
 class Render {
   public static function go(BaseController $controller, string $method): void {
-    $content = call_user_func(array($controller, $method));
+    $content = null;
+    switch($method) {
+    case 'GET':
+      $content = $controller->get();
+      break;
+    case 'PUT':
+      $content = $controller->put();
+      break;
+    case 'POST':
+      $content = $controller->post();
+      break;
+    case 'DELETE':
+      $content = $controller->delete();
+      break;
+    }
+
+    if (!$content) {
+      return;
+    }
+
     if (is_object($content) && is_a($content, \XHPRoot::class)) {
       self::renderXHP($content, $controller);
     } else if ((is_array($content)) ||
@@ -24,8 +43,7 @@ class Render {
     print
       <layout title={$title}>
         {$content}
-      </layout>
-    ;
+      </layout>;
   }
 
   private static function renderJSON(mixed $content): void {

@@ -1,7 +1,5 @@
 <?hh // strict
 
-namespace Rider\Views;
-
 final class :layout extends :x:element {
   children (:xhp);
 
